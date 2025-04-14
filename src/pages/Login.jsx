@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import api from '../api';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/userContext'; // Assuming you have a UserContext to manage user state
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { setUser } = useContext(UserContext); // Access the setUser function from context
+  const navigate = useNavigate();
 
   const loginUser = async () => {
     try {
       const res = await api.post('/auth/login', { email, password });
-      console.log(res.data);
-      alert('Login successful!');
+      console.log(res.data); // Log the user data (which should be the logged-in user)
+      setUser(res.data); // Store the logged-in user's data in context
+     // alert('Login successful!');
+      navigate('/'); // Redirect to the profile page (or any other page)
     } catch (err) {
       console.error(err);
       alert(err.response?.data?.error || 'Login failed');
@@ -19,6 +25,7 @@ const Login = () => {
   const googleLogin = () => {
     window.open('http://localhost:5000/auth/google', '_self');
   };
+  
 
   const facebookLogin = () => {
     window.open('http://localhost:5000/auth/facebook', '_self');
