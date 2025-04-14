@@ -7,7 +7,7 @@ const Profile = () => {
   const getProfile = async () => {
     try {
       const res = await api.get('/profile');
-      setUser(res.data.user);
+      setUser(res.data);
     } catch (err) {
       console.error(err);
     }
@@ -31,7 +31,7 @@ const Profile = () => {
           </div>
           <p><strong>Username:</strong> {user.username}</p>
           <p><strong>Email:</strong> {user.email}</p>
-          <p><strong>Category:</strong> {user.category}</p>
+          <p><strong>Squadron:</strong> {user.category}</p>
         </div>
       ) : (
         <p>Loading profile...</p>
