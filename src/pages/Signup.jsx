@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import api from '../api';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [form, setForm] = useState({ username: '', email: '', password: '' });
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     try {
       const res = await api.post('/auth/signup', form);
       console.log(res.data);
-      alert('Signup successful!');
+      //alert('Signup successful!');
+      navigate('/login');
     } catch (err) {
       alert(err.response?.data?.errors?.join(', ') || 'Signup failed');
     }
