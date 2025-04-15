@@ -3,26 +3,28 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
+import Home from './pages/Home';
 import Navbar from './components/Navbar';
-import axios from 'axios';
+
 import api from './api';
 import { useEffect, useState } from 'react';
 import { UserContext } from './context/userContext';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [user, setUser] = useState(null); 
 
   useEffect(() => {
-    const fetchProfile = async () => {
+    const fetchUser = async () => {
       try {
-        const res = await api.get('/profile');
-        setUser(res.data.user);
+        const res = await api.get('/auth/user'); // <- calls the route above
+        setUser(res.data); // ✅ sets logged-in user after redirect
       } catch (err) {
-        setUser(null);
+        console.log('User not logged in');
       }
     };
 
-    fetchProfile();
+    fetchUser();
   }, []);
 
   return (
@@ -30,7 +32,8 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
