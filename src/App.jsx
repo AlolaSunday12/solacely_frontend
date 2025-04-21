@@ -30,6 +30,7 @@ function App() {
   return (
     <UserContext.Provider value={{user, setUser}}>
     <BrowserRouter>
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 to-blue-200">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -37,6 +38,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
+      </div>
     </BrowserRouter>
     </UserContext.Provider>
   );
