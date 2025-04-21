@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import api from '../api';
 import { useNavigate } from 'react-router-dom';
+import Course4 from '../assets/Course4.jpg';
 
 const Signup = () => {
   const [form, setForm] = useState({ username: '', email: '', password: '' });
@@ -18,7 +19,11 @@ const Signup = () => {
   };
 
   return (
-    <div className="p-4 max-w-md mx-auto">
+    <div
+          className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center"
+          style={{ backgroundImage: `url(${Course4})` }}
+        >
+    <div className="bg-white bg-opacity-80 backdrop-blur-md rounded-xl shadow-lg p-8 w-full max-w-md mx-4">
       <h2 className="text-2xl font-bold mb-4">Signup</h2>
       <input
         className="border p-2 w-full mb-2"
@@ -45,6 +50,7 @@ const Signup = () => {
       >
         Register
       </button>
+    </div>
     </div>
   );
 };
