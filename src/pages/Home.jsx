@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'; 
 import api from '../api';
+import Comment from '../pages/comment';
+
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -71,7 +73,7 @@ const Home = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-4">
-      <h1 className="text-xl font-bold mb-4 text-center">All Users</h1>
+      <h1 className="text-xl font-bold mb-4 text-center">BMTC30 REGULARS</h1>
 
       {/* Filters */}
       <div className="flex flex-wrap gap-4 justify-center mb-6">
@@ -143,6 +145,7 @@ const Home = () => {
           <div className="text-center py-4 text-gray-500">No users found.</div>
         )}
       </div>
+      <Comment />
     </div>
   );
 };
