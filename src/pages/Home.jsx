@@ -1,7 +1,7 @@
+// Home.js
 import React, { useEffect, useState } from 'react'; 
 import api from '../api';
 import Comment from '../pages/comment';
-
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -109,47 +109,49 @@ const Home = () => {
       {/* Category Counts */}
       <div className="mb-4 flex flex-wrap gap-3 justify-center text-sm text-gray-700">
         {Object.entries(categoryCounts).map(([cat, count]) => (
-          <span
-            key={cat}
-            className="px-3 py-1 bg-gray-100 border rounded-full"
-          >
+          <span key={cat} className="px-3 py-1 bg-gray-100 border rounded-full">
             {cat}: {count}
           </span>
         ))}
       </div>
 
-      {/* Table */}
-      <div className="border rounded-md overflow-x-auto text-xs">
-        {/* Header */}
-        <div className="flex divide-x divide-gray-300 bg-gray-100 font-medium text-gray-700">
-          <div className="flex-1 px-2 py-2">Name</div>
-          <div className="flex-1 px-2 py-2">Email</div>
-          <div className="flex-1 px-2 py-2">Squadron</div>
-          <div className="flex-1 px-2 py-2">Status</div>
-        </div>
+      {/* Table */} 
+<div className="border rounded-md border-slate-800 overflow-x-auto text-sm">
+  {/* Header */}
+  <div className="flex border-b border-slate-800 bg-gray-100 font-medium text-gray-800">
+    <div className="w-12 px-2 py-2 border-r border-slate-800 text-center">S/N</div>
+    <div className="flex-1 px-2 py-2 border-r border-slate-800">Name</div>
+    <div className="flex-1 px-2 py-2 border-r border-slate-800">Email</div>
+    <div className="flex-1 px-2 py-2 border-r border-slate-800">Squadron</div>
+    <div className="flex-1 px-2 py-2">Status</div>
+  </div>
 
-        {/* Rows */}
-        {filteredUsers.length > 0 ? (
-          filteredUsers.map((user) => (
-            <div
-              key={user.id}
-              className="flex divide-x divide-gray-200 border-t text-gray-800"
-            >
-              <div className="flex-1 px-2 py-2 truncate">{user.username}</div>
-              <div className="flex-1 px-2 py-2 truncate">{user.email}</div>
-              <div className="flex-1 px-2 py-2 truncate">{user.category || 'None'}</div>
-              <div className="flex-1 px-2 py-2 truncate">{user.status || 'Active'}</div>
-            </div>
-          ))
-        ) : (
-          <div className="text-center py-4 text-gray-500">No users found.</div>
-        )}
+  {/* Rows */}
+  {filteredUsers.length > 0 ? (
+    filteredUsers.map((user, index) => (
+      <div
+        key={user.id}
+        className="flex border-b border-slate-800 text-gray-800 hover:bg-gray-50"
+      >
+        <div className="w-12 px-2 py-2 border-r border-slate-800 text-center">{index + 1}</div>
+        <div className="flex-1 px-2 py-2 border-r border-slate-800 truncate">{user.username}</div>
+        <div className="flex-1 px-2 py-2 border-r border-slate-800 truncate">{user.email}</div>
+        <div className="flex-1 px-2 py-2 border-r border-slate-800 truncate">{user.category || 'None'}</div>
+        <div className="flex-1 px-2 py-2 truncate">{user.status || 'Active'}</div>
       </div>
+    ))
+  ) : (
+    <div className="text-center py-4 text-gray-500">No users found.</div>
+  )}
+</div>
+
+
       <Comment />
     </div>
   );
 };
 
 export default Home;
+
 
 
