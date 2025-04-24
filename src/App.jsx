@@ -5,6 +5,7 @@ import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
+import ForgotPassword from './components/forgotPassword'
 
 import api from './api';
 import { useEffect, useState } from 'react';
@@ -37,6 +38,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
       </div>
     </BrowserRouter>
