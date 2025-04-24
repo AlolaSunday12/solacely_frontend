@@ -37,25 +37,36 @@ const Login = () => {
     >
       <div className="bg-white bg-opacity-80 backdrop-blur-md rounded-xl shadow-lg p-8 w-full max-w-md mx-4">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Login</h2>
+
         <input
           className="border border-gray-300 p-3 w-full mb-4 rounded"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+
         <input
-          className="border border-gray-300 p-3 w-full mb-4 rounded"
+          className="border border-gray-300 p-3 w-full mb-2 rounded"
           placeholder="Password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
+        {/* Forgot password link */}
+        <div className="text-right text-sm mb-4">
+          <a href="/forgot-password" className="text-blue-600 hover:underline">
+            Forgot Password?
+          </a>
+        </div>
+
         <button
           onClick={loginUser}
           className="bg-blue-600 hover:bg-blue-700 transition text-white px-4 py-3 w-full rounded mb-4"
         >
           Login
         </button>
+
         <div className="flex justify-between space-x-4">
           <button
             onClick={googleLogin}
